@@ -37,6 +37,14 @@
             <span>[[item.age]]</span>
           </template>
         </data-table-column>
+        <data-table-column name="Status">
+          <template>
+            <span>
+              <span hidden$="[[equal(item.isActive, true)]]">Not active</span>
+              <span hidden$="[[!equal(item.isActive, true)]]">Active</span>
+            </span>
+          </template>
+        </data-table-column>
         <data-table-column name="Action">
           <template>
             <button>[[actionText]]</button>
