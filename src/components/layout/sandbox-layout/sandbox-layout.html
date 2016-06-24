@@ -1,0 +1,37 @@
+<link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../vendor/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../../vendor/app-layout/app-header/app-header.html">
+<link rel="import" href="../../../vendor/app-layout/app-toolbar/app-toolbar.html">
+
+<!-- style module -->
+<link rel="import" href="styles/sandbox-layout-styles.html">
+
+<dom-module id="sandbox-layout">
+  <template>
+    <style include="sandbox-layout-styles"></style>
+
+    <app-header-layout>
+      <app-header class="header" shadow>
+        <app-toolbar>
+          <div title class="title">Datatable Sandbox</div>
+        </app-toolbar>
+      </app-header>
+      <div class="container">
+        <h1>
+          <content select="[title]"></content>
+        </h1>
+        <content select="[main]"></content>
+      </div>
+    </app-header-layout>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'sandbox-layout'
+      });
+    })();
+  </script>
+</dom-module>

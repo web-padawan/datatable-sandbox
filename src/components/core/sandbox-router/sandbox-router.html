@@ -1,0 +1,86 @@
+<link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../vendor/app-router/app-router.html">
+<link rel="import" href="../../../vendor/pushstate-anchor/pushstate-anchor.html">
+
+<!-- style module -->
+<link rel="import" href="styles/sandbox-router-styles.html">
+
+<dom-module id="sandbox-router">
+  <template>
+    <style include="sandbox-router-styles"></style>
+
+    <app-router id="router" mode="pushstate" init="manual">
+
+      <!-- insertion point for mock routes -->
+      <content select="app-route"></content>
+
+      <app-route
+        path="/"
+        redirect="/demo/table/"
+      ></app-route>
+
+      <app-route
+        path="/demo/"
+        redirect="/demo/table/"
+      ></app-route>
+
+      <app-route
+        path="/demo/table/"
+        import="components/pages/sandbox-demo-page/sandbox-demo-page.html"
+        element="sandbox-demo-page"
+        data-sub-page="table"
+      ></app-route>
+
+      <app-route
+        path="/demo/text/"
+        import="components/pages/sandbox-demo-page/sandbox-demo-page.html"
+        element="sandbox-demo-page"
+        data-sub-page="text"
+      ></app-route>
+
+      <app-route
+        path="*"
+        import="components/pages/sandbox-404-page/sandbox-404-page.html"
+        element="sandbox-404-page"
+      ></app-route>
+
+    </app-router>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'sandbox-router',
+        listeners: {
+          'router.activate-route-end': '_onRouteChanged',
+          'router.before-data-binding': '_onBeforeDataBinding'
+        },
+        properties: {
+          routeData: {
+            type: Object,
+            value: function() {
+              return {};
+            }
+          }
+        },
+        start: function() {
+          this.$.router.init();
+        },
+        _onBeforeDataBinding: function(e) {
+          var route = e.detail.route;
+          if (route.dataset.subPage) {
+            e.detail.model.subPage = route.dataset.subPage;
+          }
+        },
+        _onRouteChanged: function(e) {
+          this.mixin(this.routeData, e.detail);
+          this.fire('sandbox-route-changed', {
+            data: this.routeData
+          });
+        }
+      });
+    })();
+  </script>
+</dom-module>

@@ -1,0 +1,31 @@
+<link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../layout/sandbox-layout/sandbox-layout.html">
+
+<!-- style module -->
+<link rel="import" href="styles/sandbox-404-page-styles.html">
+
+<dom-module id="sandbox-404-page">
+  <template>
+    <style include="sandbox-404-page-styles"></style>
+
+    <sandbox-layout>
+      <div title>Page not found</div>
+
+      <div main>
+        <ul>
+          <li><a is="pushstate-anchor" href="/">Go home</a></li>
+        </ul>
+      </div>
+    </sandbox-layout>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'sandbox-404-page'
+      });
+    })();
+  </script>
+</dom-module>

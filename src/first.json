@@ -1,0 +1,38 @@
+[
+  {
+    "id": "576d7d3619e4aa5c8e067f14",
+    "isActive": false,
+    "age": 30,
+    "name": "Staci"
+  },
+  {
+    "id": "576d7d361d0d08993b69d5d3",
+    "isActive": false,
+    "age": 24,
+    "name": "Sheila"
+  },
+  {
+    "id": "576d7d3625a40bb5ac821549",
+    "isActive": false,
+    "age": 28,
+    "name": "Shelton"
+  },
+  {
+    "id": "576d7d36af213bf7183b2260",
+    "isActive": true,
+    "age": 34,
+    "name": "Scott"
+  },
+  {
+    "id": "576d7d362b29382f1488e9ed",
+    "isActive": false,
+    "age": 37,
+    "name": "Rosalyn"
+  },
+  {
+    "id": "576d7d36dc7855f8007d40b0",
+    "isActive": true,
+    "age": 29,
+    "name": "Susie"
+  }
+]

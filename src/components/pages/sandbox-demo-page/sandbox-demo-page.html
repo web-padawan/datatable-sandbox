@@ -1,0 +1,65 @@
+<link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../vendor/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../../vendor/iron-lazy-pages/iron-lazy-pages.html">
+<link rel="import" href="../../layout/sandbox-layout/sandbox-layout.html">
+
+<!-- style module -->
+<link rel="import" href="styles/sandbox-demo-page-styles.html">
+
+<dom-module id="sandbox-demo-page">
+  <template>
+    <style include="sandbox-demo-page-styles"></style>
+    <sandbox-layout>
+      <div title>Demo</div>
+
+      <div main>
+
+        <p>There are two tabs, one contains table...</p>
+
+        <paper-tabs class="tabs" selected="[[subPage]]" attr-for-selected="tab-name">
+          <paper-tab tab-name="table">
+            <a is="pushstate-anchor" href="/demo/table/" class="tab-link">Table</a>
+          </paper-tab>
+          <paper-tab tab-name="text">
+            <a is="pushstate-anchor" href="/demo/text/" class="tab-link">Text</a>
+          </paper-tab>
+        </paper-tabs>
+
+        <iron-lazy-pages
+          attr-for-selected="sub-page"
+          selected="[[subPage]]"
+          load-async
+        >
+          <template
+            is="iron-lazy-page"
+            sub-page="table"
+            path="/components/pages/sandbox-demo-table-sub-page/sandbox-demo-table-sub-page.html"
+          >
+            <sandbox-demo-table-sub-page></sandbox-demo-table-sub-page>
+          </template>
+          <template
+            is="iron-lazy-page"
+            sub-page="text"
+            path="/components/pages/sandbox-demo-text-sub-page/sandbox-demo-text-sub-page.html"
+          >
+            <sandbox-demo-text-sub-page></sandbox-demo-text-sub-page>
+          </template>
+        </iron-lazy-pages>
+
+      </div>
+    </sandbox-layout>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'sandbox-demo-page',
+        properties: {
+          subPage: String
+        }
+      });
+    })();
+  </script>
+</dom-module>

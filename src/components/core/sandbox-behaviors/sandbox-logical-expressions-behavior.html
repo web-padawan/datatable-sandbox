@@ -1,0 +1,17 @@
+<script>
+  var sandbox = window.sandbox || {};
+
+  /* @polymerBehavior */
+  sandbox.LogicalExpressionsBehavior = {
+    and: function () {
+      var result = true;
+      for (var i = 0; i < arguments.length; i++) {
+        if (!arguments[i]) {
+          result = false;
+          break;
+        }
+      }
+      return result;
+    }
+  }
+</script>

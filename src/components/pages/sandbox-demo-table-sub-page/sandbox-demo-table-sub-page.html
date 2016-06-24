@@ -1,0 +1,88 @@
+<link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../vendor/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../../vendor/iron-data-table/iron-data-table.html">
+
+<link rel="import" href="../../core/sandbox-behaviors/sandbox-logical-expressions-behavior.html">
+
+<!-- style module -->
+<link rel="import" href="styles/sandbox-demo-table-sub-page-styles.html">
+
+<dom-module id="sandbox-demo-table-sub-page">
+  <template>
+    <style include="sandbox-demo-table-sub-page-styles"></style>
+
+    <iron-ajax
+      auto
+      url="/first.json"
+      handle-as="json"
+      on-response="_onFirstResponse"
+    ></iron-ajax>
+
+    <iron-ajax
+      auto
+      url="/second.json"
+      handle-as="json"
+      on-response="_onSecondResponse"
+    ></iron-ajax>
+
+    <template is="dom-if" if="[[and(firstLoaded, secondLoaded)]]">
+      <iron-data-table items="[[data]]">
+        <data-table-column name="Name">
+          <template>
+            <span>[[item.name]]</span>
+          </template>
+        </data-table-column>
+        <data-table-column name="Age">
+          <template>
+            <span>[[item.age]]</span>
+          </template>
+        </data-table-column>
+        <data-table-column name="Action">
+          <template>
+            <button>[[actionText]]</button>
+          </template>
+        </data-table-column>
+      </iron-data-table>
+    </template>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'sandbox-demo-table-sub-page',
+        behaviors: [
+          sandbox.LogicalExpressionsBehavior
+        ],
+        properties: {
+          data: {
+            type: Array,
+            value: function () {
+              return [];
+            }
+          },
+          actionText: {
+            type: String,
+            value: 'Action'
+          },
+          firstLoaded: {
+            type: Boolean
+          },
+          secondLoaded: {
+            type: Boolean
+          }
+        },
+        _onFirstResponse: function (e) {
+          this.data = this.data.concat(e.detail.response);
+          this.firstLoaded = true;
+        },
+        _onSecondResponse: function (e) {
+          this.data = this.data.concat(e.detail.response);
+          this.secondLoaded = true;
+          console.log(this.data);
+        }
+      });
+    })();
+  </script>
+</dom-module>

@@ -1,0 +1,15 @@
+{
+  "name": "sandbox",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.5.0",
+    "app-layout": "PolymerElements/app-layout#^0.9.0",
+    "app-router": "^2.6.1",
+    "font-roboto": "PolymerElements/font-roboto-local#1.0.1",
+    "pushstate-anchor": "^0.4.0",
+    "web-component-tester": "Polymer/web-component-tester#^4.2.2",
+    "paper-tabs": "PolymerElements/paper-tabs#^1.6.2",
+    "iron-lazy-pages": "^1.2.0",
+    "iron-data-table": "git://github.com/Saulis/iron-data-table.git#rewrite-templatizers",
+    "iron-ajax": "^1.2.0"
+  }
+}
