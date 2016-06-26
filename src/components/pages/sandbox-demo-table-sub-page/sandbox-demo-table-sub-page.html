@@ -40,8 +40,8 @@
         <data-table-column name="Status">
           <template>
             <span>
-              <span hidden$="[[equal(item.isActive, true)]]">Not active</span>
-              <span hidden$="[[!equal(item.isActive, true)]]">Active</span>
+              <div hidden$="[[greater(item.age, 30)]]">Young</div>
+              <div hidden$="[[!greater(item.age, 30)]]">Adult</div>
             </span>
           </template>
         </data-table-column>
