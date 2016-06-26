@@ -41,7 +41,7 @@
           <template>
             <span>
               <div hidden$="[[greater(item.age, 30)]]">Young</div>
-              <div hidden$="[[!greater(item.age, 30)]]">Adult</div>
+              <template is="dom-if" if="[[greater(item.age, 30)]]">Adult</template>
             </span>
           </template>
         </data-table-column>
