@@ -51,7 +51,7 @@
             <span>[[item.name]]</span>
           </template>
         </data-table-column>
-        <data-table-column name="Years old">
+        <data-table-column name="Years old" sort-by="age">
           <template>
             <span>[[item.age]]</span>
           </template>
@@ -78,7 +78,7 @@
         </data-table-column>
         <data-table-column name="Action">
           <template>
-            <button>[[actionText]]</button>
+            <button on-tap="_alertItem">[[actionText]]</button>
           </template>
         </data-table-column>
       </iron-data-table>
@@ -129,6 +129,9 @@
               isActive: false
             });
           }
+        },
+        _alertItem: function (e) {
+          alert('Selected user: ' + e.model.item.name);
         }
       });
     })();
