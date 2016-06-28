@@ -1,4 +1,7 @@
 <link rel="import" href="../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../vendor/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../../vendor/paper-input/paper-input.html">
+<link rel="import" href="../../../vendor/paper-button/paper-button.html">
 <link rel="import" href="../../../vendor/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../../vendor/iron-data-table/iron-data-table.html">
 
@@ -25,23 +28,51 @@
       on-response="_onSecondResponse"
     ></iron-ajax>
 
+    <div class="user-box">
+      <paper-input
+        id="username"
+        class="user-name"
+        label="Enter user name"
+      ></paper-input>
+      <paper-button
+        id="add"
+        class="user-add"
+        raised
+        on-tap="_addUser"
+      >
+        <span>Add user</span>
+      </paper-button>
+    </div>
+
     <template is="dom-if" if="[[and(firstLoaded, secondLoaded)]]">
-      <iron-data-table items="[[data]]">
+      <iron-data-table items="{{data}}">
         <data-table-column name="Name">
           <template>
             <span>[[item.name]]</span>
           </template>
         </data-table-column>
-        <data-table-column name="Age">
+        <data-table-column name="Years old">
           <template>
             <span>[[item.age]]</span>
           </template>
         </data-table-column>
-        <data-table-column name="Status">
+        <data-table-column name="Age">
           <template>
             <span>
               <div hidden$="[[greater(item.age, 30)]]">Young</div>
               <template is="dom-if" if="[[greater(item.age, 30)]]">Adult</template>
+            </span>
+          </template>
+        </data-table-column>
+        <data-table-column name="Is active">
+          <template>
+            <span>[[item.isActive]]</span>
+          </template>
+        </data-table-column>
+        <data-table-column name="Active">
+          <template>
+            <span>
+              <paper-checkbox checked="{{item.isActive}}"></paper-checkbox>
             </span>
           </template>
         </data-table-column>
@@ -89,6 +120,15 @@
           this.data = this.data.concat(e.detail.response);
           this.secondLoaded = true;
           console.log(this.data);
+        },
+        _addUser: function () {
+          if (this.$.username.value) {
+            this.push('data', {
+              name: this.$.username.value,
+              age: 1,
+              isActive: false
+            });
+          }
         }
       });
     })();
