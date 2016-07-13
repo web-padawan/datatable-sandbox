@@ -13,7 +13,9 @@
     "iron-data-table": "^1.0.0",
     "iron-ajax": "^1.2.0",
     "paper-checkbox": "PolymerElements/paper-checkbox#^1.2.1",
-    "paper-button": "PolymerElements/paper-button#^1.0.12"
+    "paper-button": "PolymerElements/paper-button#^1.0.12",
+    "paper-menu-button": "^1.3.0",
+    "paper-tooltip": "^1.1.2"
   },
   "resolutions": {
     "iron-list": "translate2d"

@@ -3,6 +3,10 @@
     <style include="shared-styles">
       :host {
         display: block;
+
+        --paper-menu-button-content: {
+          overflow: visible !important;
+        };
       }
       :host .user-name {
         width: 200px;
@@ -13,6 +17,12 @@
         display: inline-block;
         vertical-align: middle;
         border: solid 1px #ccc;
+      }
+      :host .dropdown-content {
+        margin-top: 10px;
+        padding: 10px;
+        border: solid 1px #ccc;
+        overflow: visible;
       }
     </style>
   </template>

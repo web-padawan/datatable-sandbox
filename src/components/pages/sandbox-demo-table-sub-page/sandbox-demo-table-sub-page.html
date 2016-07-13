@@ -2,10 +2,13 @@
 <link rel="import" href="../../../vendor/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../../vendor/paper-input/paper-input.html">
 <link rel="import" href="../../../vendor/paper-button/paper-button.html">
+<link rel="import" href="../../../vendor/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../../../vendor/paper-menu-button/paper-menu-button.html">
 <link rel="import" href="../../../vendor/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../../vendor/iron-data-table/iron-data-table.html">
 
 <link rel="import" href="../../core/sandbox-behaviors/sandbox-logical-expressions-behavior.html">
+<link rel="import" href="../../core/bi-dropdown/bi-dropdown.html">
 
 <!-- style module -->
 <link rel="import" href="styles/sandbox-demo-table-sub-page-styles.html">
@@ -53,7 +56,13 @@
         </data-table-column>
         <data-table-column name="Years old" sort-by="age">
           <template>
-            <span>[[item.age]]</span>
+            <span id="item-[[index]]">[[item.age]]</span>
+            <paper-tooltip
+              for="item-[[index]]"
+              position="bottom"
+              offset="14">
+              Tooltip text goes here
+            </paper-tooltip>
           </template>
         </data-table-column>
         <data-table-column name="Age">
@@ -78,7 +87,15 @@
         </data-table-column>
         <data-table-column name="Action">
           <template>
-            <button on-tap="_alertItem">[[actionText]]</button>
+            <paper-menu-button vertical-offset="20" no-animations>
+              <paper-button class="dropdown-trigger">Actions</paper-button>
+              <div class="dropdown-content dropdown-wrapper">
+                <ul class="actions-list">
+                  <li>Edit</li>
+                  <li>Delete</li>
+                </ul>
+              </div>
+            </paper-menu-button>
           </template>
         </data-table-column>
       </iron-data-table>
