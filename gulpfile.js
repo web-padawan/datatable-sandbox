@@ -16,7 +16,6 @@ var DIST = 'dist';
 var TMP = '.tmp';
 var SHARDS = '.shards';
 var SERVER = 'node_modules/local-web-server/bin/cli.js';
-var renamer = 'node_modules/renamer/bin/cli.js';
 
 var serverConfig = jsonfile.readFileSync('.local-web-server.json');
 
