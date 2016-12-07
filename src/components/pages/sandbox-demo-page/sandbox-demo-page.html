@@ -1,6 +1,6 @@
-<link rel="import" href="../../../vendor/polymer/polymer.html">
-<link rel="import" href="../../../vendor/paper-tabs/paper-tabs.html">
-<link rel="import" href="../../../vendor/iron-lazy-pages/iron-lazy-pages.html">
+<link rel="import" href="../../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../../vendor/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../../../vendor/iron-lazy-pages/iron-lazy-pages.html">
 <link rel="import" href="../../layout/sandbox-layout/sandbox-layout.html">
 
 <!-- style module -->
@@ -10,18 +10,18 @@
   <template>
     <style include="sandbox-demo-page-styles"></style>
     <sandbox-layout>
-      <div title>Demo</div>
+      <div title>Hello!</div>
 
       <div main>
 
-        <p>There are two tabs, one contains table...</p>
+        <p>There are two tabs</p>
 
         <paper-tabs class="tabs" selected="[[subPage]]" attr-for-selected="tab-name">
-          <paper-tab tab-name="table">
-            <a is="pushstate-anchor" href="/demo/table/" class="tab-link">Table</a>
+          <paper-tab tab-name="first">
+            <a is="pushstate-anchor" href="/demo/first/" class="tab-link">First</a>
           </paper-tab>
-          <paper-tab tab-name="text">
-            <a is="pushstate-anchor" href="/demo/text/" class="tab-link">Text</a>
+          <paper-tab tab-name="second">
+            <a is="pushstate-anchor" href="/demo/second/" class="tab-link">Second</a>
           </paper-tab>
         </paper-tabs>
 
@@ -32,17 +32,17 @@
         >
           <template
             is="iron-lazy-page"
-            sub-page="table"
-            path="/components/pages/sandbox-demo-table-sub-page/sandbox-demo-table-sub-page.html"
+            sub-page="first"
+            path="/components/pages/sandbox-demo-first-sub-page/sandbox-demo-first-sub-page.html"
           >
-            <sandbox-demo-table-sub-page></sandbox-demo-table-sub-page>
+            <sandbox-demo-first-sub-page></sandbox-demo-first-sub-page>
           </template>
           <template
             is="iron-lazy-page"
-            sub-page="text"
-            path="/components/pages/sandbox-demo-text-sub-page/sandbox-demo-text-sub-page.html"
+            sub-page="second"
+            path="/components/pages/sandbox-demo-second-sub-page/sandbox-demo-second-sub-page.html"
           >
-            <sandbox-demo-text-sub-page></sandbox-demo-text-sub-page>
+            <sandbox-demo-second-sub-page></sandbox-demo-second-sub-page>
           </template>
         </iron-lazy-pages>
 

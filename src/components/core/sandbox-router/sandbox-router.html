@@ -1,6 +1,6 @@
-<link rel="import" href="../../../vendor/polymer/polymer.html">
-<link rel="import" href="../../../vendor/app-router/app-router.html">
-<link rel="import" href="../../../vendor/pushstate-anchor/pushstate-anchor.html">
+<link rel="import" href="../../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../../vendor/app-router/app-router.html">
+<link rel="import" href="../../../../vendor/pushstate-anchor/pushstate-anchor.html">
 
 <!-- style module -->
 <link rel="import" href="styles/sandbox-router-styles.html">
@@ -16,26 +16,26 @@
 
       <app-route
         path="/"
-        redirect="/demo/table/"
+        redirect="/demo/first/"
       ></app-route>
 
       <app-route
         path="/demo/"
-        redirect="/demo/table/"
+        redirect="/demo/first/"
       ></app-route>
 
       <app-route
-        path="/demo/table/"
+        path="/demo/first/"
         import="components/pages/sandbox-demo-page/sandbox-demo-page.html"
         element="sandbox-demo-page"
-        data-sub-page="table"
+        data-sub-page="first"
       ></app-route>
 
       <app-route
-        path="/demo/text/"
+        path="/demo/second/"
         import="components/pages/sandbox-demo-page/sandbox-demo-page.html"
         element="sandbox-demo-page"
-        data-sub-page="text"
+        data-sub-page="second"
       ></app-route>
 
       <app-route

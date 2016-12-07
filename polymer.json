@@ -1,0 +1,15 @@
+{
+  "entrypoint": "src/index.html",
+  "shell": "src/components/app/sandbox-app/sandbox-app.html",
+  "fragments": [
+    "src/components/pages/sandbox-404-page/sandbox-404-page.html",
+    "src/components/pages/sandbox-demo-page/sandbox-demo-page.html",
+    "src/components/pages/sandbox-demo-first-sub-page/sandbox-demo-first-sub-page.html",
+    "src/components/pages/sandbox-demo-second-sub-page/sandbox-demo-second-sub-page.html"
+  ],
+  "sources": [
+    "vendor/**/*",
+    "src/components/**/*",
+    "src/styles/**/*"
+  ]
+}

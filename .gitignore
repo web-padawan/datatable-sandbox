@@ -1,6 +1,9 @@
 node_modules
 dist
+vendor
 src/vendor
 .tmp
 .publish/
 coverage
+.idea
+.shards

@@ -1,0 +1,24 @@
+<link rel="import" href="../../../../vendor/polymer/polymer.html">
+
+<!-- style module -->
+<link rel="import" href="styles/sandbox-demo-second-sub-page-styles.html">
+
+<dom-module id="sandbox-demo-second-sub-page">
+  <template>
+    <style include="sandbox-demo-second-sub-page-styles"></style>
+
+    <div>
+      <p>Second tab.</p>
+    </div>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'sandbox-demo-second-sub-page'
+      });
+    })();
+  </script>
+</dom-module>
