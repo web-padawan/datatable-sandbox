@@ -1,4 +1,4 @@
-# Datatable Sandbox
+# Sandbox
 
 ## Setup
 ```
