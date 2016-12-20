@@ -98,15 +98,13 @@ gulp.task('images', function() {
 
 // Vulcanize elements
 gulp.task('vulcanize', function() {
-  return merge(project.sources(), project.dependencies())
-    .pipe(project.analyzer)
-    .on('error', errorHandler)
-    .pipe(project.bundler)
-    .on('error', errorHandler)
-    .pipe(gulp.dest(SHARDS))
-    .pipe($.size({
-      title: 'vulcanize'
-    }));
+  return new Promise((resolve, reject) => {
+    var buildStream = merge(project.sources(), project.dependencies())
+      .pipe(project.bundler)
+      .on('error', reject)
+      .pipe(gulp.dest(SHARDS))
+      .on('end', resolve);
+  });
 });
 
 // Minify HTML and inline styles

@@ -23,7 +23,7 @@
     "gulp-size": "^2.0.0",
     "gulp-uglify": "^1.5.4",
     "gulp-useref": "^3.1.0",
-    "polymer-build": "0.5.1",
+    "polymer-build": "0.6.0-alpha.3",
     "htmlhint": "^0.9.13",
     "jsonfile": "^2.3.1",
     "local-web-server": "^1.2.6",
@@ -36,7 +36,6 @@
     "web-component-tester-istanbul": "https://github.com/t2ym/web-component-tester-istanbul/tarball/0.10.1"
   },
   "scripts": {
-    "postinstall": "ln -s `pwd`/vendor `pwd`/src/vendor",
     "lint:js": "eslint src/components --ext .html",
     "lint:html": "htmlhint --config .htmlhintrc src/{components,styles}/**/*.html",
     "lint": "npm-run-all -p -c lint:*",
