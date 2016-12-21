@@ -9,15 +9,17 @@ var merge = require('merge-stream');
 var path = require('path');
 var polyclean = require('polyclean');
 var cp = require('child_process');
-var jsonfile = require('jsonfile');
 var browserSync = require('browser-sync');
+
+var logger = require('plylog');
+logger.setVerbose();
 
 var DIST = 'dist';
 var TMP = '.tmp';
 var SHARDS = '.shards';
 var SERVER = 'node_modules/local-web-server/bin/cli.js';
 
-var serverConfig = jsonfile.readFileSync('.local-web-server.json');
+var serverConfig = require('./.local-web-server.json');
 
 const polymer = require('polymer-build');
 const polymerJSON = require('./polymer.json');
