@@ -2,7 +2,7 @@
 
 ## Setup
 ```
-npm i -g gulp bower && npm i && bower i
+npm i -g yarn gulp bower && yarn && bower i
 ```
 
 ## Local development
