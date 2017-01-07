@@ -8,7 +8,6 @@
     "src/components/pages/sandbox-demo-second-sub-page/sandbox-demo-second-sub-page.html"
   ],
   "sources": [
-    "vendor/**/*",
     "src/**/*"
   ]
 }
