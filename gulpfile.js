@@ -7,7 +7,6 @@ var del = require('del');
 var runSequence = require('run-sequence');
 var merge = require('merge-stream');
 var path = require('path');
-var polyclean = require('polyclean');
 var cp = require('child_process');
 var browserSync = require('browser-sync');
 
@@ -48,7 +47,6 @@ gulp.task('index', function() {
       collapseWhitespace: true,
       removeComments: true
     }))
-    .pipe(polyclean.uglifyJs())
     .pipe($.crisper({
       scriptInHead: true
     }))
