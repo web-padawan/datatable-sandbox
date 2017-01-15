@@ -104,6 +104,8 @@ gulp.task('vulcanize', function() {
       .on('error', reject)
       .pipe(gulp.dest(SHARDS))
       .on('end', resolve);
+  }).then(function () {
+    console.log('bundle complete!');
   });
 });
 
