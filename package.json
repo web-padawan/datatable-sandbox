@@ -28,7 +28,7 @@
     "merge-stream": "^1.0.1",
     "npm-run-all": "^4.0.0",
     "opener": "^1.4.1",
-    "polymer-build": "0.8.0",
+    "polymer-build": "0.8.1",
     "run-sequence": "^1.2.2",
     "web-component-tester": "^4.2.2",
     "web-component-tester-istanbul": "https://github.com/t2ym/web-component-tester-istanbul/tarball/0.10.1"
