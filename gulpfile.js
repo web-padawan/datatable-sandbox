@@ -100,7 +100,7 @@ gulp.task('images', function() {
 gulp.task('vulcanize', function() {
   return new Promise((resolve, reject) => {
     var buildStream = merge(project.sources(), project.dependencies())
-      .pipe(project.bundler)
+      .pipe(project.bundler())
       .on('error', reject)
       .pipe(gulp.dest(SHARDS))
       .on('end', resolve);
