@@ -1,4 +1,7 @@
-<link rel="import" href="../../../../vendor/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../../../bower_components/paper-item/paper-item.html">
 
 <!-- style module -->
 <link rel="import" href="styles/sandbox-demo-first-sub-page-styles.html">
@@ -11,13 +14,27 @@
       <p>First tab.</p>
     </div>
 
+    <paper-dropdown-menu label="Gender">
+      <paper-listbox class="dropdown-content" attr-for-selected="name">
+        <paper-item name$="[[male]]">Male</paper-item>
+        <paper-item name="f">Female</paper-item>
+      </paper-listbox>
+    </paper-dropdown-menu>
+
   </template>
   <script>
     (function() {
       'use strict';
 
       Polymer({
-        is: 'sandbox-demo-first-sub-page'
+        is: 'sandbox-demo-first-sub-page',
+
+        properties: {
+          male: {
+            type: String,
+            value: 'm'
+          }
+        }
       });
     })();
   </script>

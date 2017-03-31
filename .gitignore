@@ -1,9 +1,11 @@
 node_modules
 dist
 vendor
+bower_components
 src/vendor
 .tmp
 .publish/
 coverage
 .idea
 .shards
+npm-debug.log

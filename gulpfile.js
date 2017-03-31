@@ -67,10 +67,10 @@ gulp.task('copy', function() {
     .pipe(gulp.dest(dist()));
 
   // Copy webcomponents.js
-  var vendor = gulp.src('src/vendor/webcomponentsjs/webcomponents-lite.min.js')
-    .pipe(gulp.dest(dist('vendor/webcomponentsjs')));
+  var bower = gulp.src('src/bower_components/webcomponentsjs/webcomponents-lite.min.js')
+    .pipe(gulp.dest(dist('bower_components/webcomponentsjs')));
 
-  return merge(vendor, favicon, json)
+  return merge(bower, favicon, json)
     .pipe($.size({
       title: 'copy'
     }));
@@ -78,8 +78,8 @@ gulp.task('copy', function() {
 
 // Copy fonts to dist
 gulp.task('fonts', function() {
-  return gulp.src('vendor/font-roboto/**/*.ttf')
-    .pipe(gulp.dest(dist('vendor/font-roboto')))
+  return gulp.src('bower_components/font-roboto/**/*.ttf')
+    .pipe(gulp.dest(dist('bower_components/font-roboto')))
     .pipe($.size({
       title: 'fonts'
     }));
@@ -117,7 +117,6 @@ gulp.task('minify:html', function() {
       removeComments: true,
       minifyCSS: true
     }))
-    .pipe($.replace('url(../../vendor', 'url(/vendor')) // remove this, run build an ou will see 404 .ttf requests
     .pipe(gulp.dest(TMP + '/src/components'))
     .pipe($.size({
       title: 'minify:html'

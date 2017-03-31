@@ -8,6 +8,9 @@
     "pushstate-anchor": "^0.4.0",
     "web-component-tester": "Polymer/web-component-tester#^4.2.2",
     "paper-tabs": "PolymerElements/paper-tabs#^1.6.2",
-    "iron-lazy-pages": "^1.4.4"
+    "iron-lazy-pages": "^1.4.4",
+    "paper-dropdown-menu": "^1.5.0",
+    "paper-listbox": "^1.1.2",
+    "paper-item": "^1.2.1"
   }
 }
