@@ -1,5 +1,5 @@
 {
-  "entrypoint": "src/index.html",
+  "entrypoint": "index.html",
   "shell": "src/components/app/sandbox-app/sandbox-app.html",
   "fragments": [
     "src/components/pages/sandbox-404-page/sandbox-404-page.html",

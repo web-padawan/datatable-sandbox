@@ -11,16 +11,16 @@
   <title>Sandbox</title>
 
   <!-- Add to homescreen for Safari on iOS -->
-  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="src/images/touch/apple-touch-icon.png">
 
   <!-- Tile icon for Win8 (144x144) -->
-  <meta name="msapplication-TileImage" content="images/touch/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="src/images/touch/ms-icon-144x144.png">
 
   <script>
     // setup Polymer options
     window.Polymer = {
       dom: 'shady',
-      lazyRegister: true
+      lazyRegister: 'max'
     };
 
     // load webcomponents polyfills
@@ -38,7 +38,7 @@
     })();
   </script>
 
-  <link rel="import" href="components/app/sandbox-app/sandbox-app.html">
+  <link rel="import" href="src/components/app/sandbox-app/sandbox-app.html">
 
   <style is="custom-style" include="shared-styles"></style>
 

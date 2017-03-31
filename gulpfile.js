@@ -11,7 +11,7 @@ var cp = require('child_process');
 var browserSync = require('browser-sync');
 
 var logger = require('plylog');
-logger.setVerbose();
+// logger.setVerbose();
 
 var DIST = 'dist';
 var TMP = '.tmp';
@@ -41,7 +41,7 @@ gulp.task('clean', function() {
 
 // Process index.html
 gulp.task('index', function() {
-  return gulp.src('src/index.html')
+  return gulp.src('index.html')
     .pipe($.useref())
     .pipe($.htmlmin({
       collapseWhitespace: true,
@@ -78,7 +78,7 @@ gulp.task('copy', function() {
 
 // Copy fonts to dist
 gulp.task('fonts', function() {
-  return gulp.src('src/vendor/font-roboto/**/*.ttf')
+  return gulp.src('vendor/font-roboto/**/*.ttf')
     .pipe(gulp.dest(dist('vendor/font-roboto')))
     .pipe($.size({
       title: 'fonts'
@@ -92,7 +92,7 @@ gulp.task('images', function() {
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest(dist('images')))
+    .pipe(gulp.dest(dist('src/images')))
     .pipe($.size({title: 'images'}));
 });
 
@@ -111,17 +111,14 @@ gulp.task('vulcanize', function() {
 
 // Minify HTML and inline styles
 gulp.task('minify:html', function() {
-    return gulp.src([
-      SHARDS + '/src/components/app/**/*-app.html',
-      SHARDS + '/src/components/pages/**/*-{page,tab}.html'
-    ], { base: SHARDS + '/src' })
+    return gulp.src(SHARDS + '/src/components/{app,pages}/**/*-{app,page}.html')
     .pipe($.htmlmin({
       collapseWhitespace: true,
       removeComments: true,
       minifyCSS: true
     }))
-    .pipe($.replace(/(assetpath=".+)(\.\.\/vendor)(?=.+")/g, '$1vendor'))
-    .pipe(gulp.dest(TMP))
+    .pipe($.replace('url(../../vendor', 'url(/vendor')) // remove this, run build an ou will see 404 .ttf requests
+    .pipe(gulp.dest(TMP + '/src/components'))
     .pipe($.size({
       title: 'minify:html'
     }));
@@ -151,7 +148,7 @@ gulp.task('minify:js', function() {
 
 // Move processed files to dist
 gulp.task('finalize', function() {
-  return gulp.src(TMP + '/{components,styles}/**/*.{html,js}')
+  return gulp.src(TMP + '/**/*.{html,js}')
     .pipe(gulp.dest(dist()))
     .pipe($.size({
       title: 'finalize'
@@ -183,7 +180,7 @@ gulp.task('serve:dist', function(done) {
 
 // Serve project from src
 gulp.task('serve', function(done) {
-  return cp.spawn('node', [SERVER, '--directory=src'], {stdio: 'inherit'})
+  return cp.spawn('node', [SERVER], {stdio: 'inherit'})
     .on('close', done);
 });
 
