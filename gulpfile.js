@@ -9,6 +9,7 @@ var merge = require('merge-stream');
 var path = require('path');
 var cp = require('child_process');
 var browserSync = require('browser-sync');
+var bundler = require('polymer-bundler');
 
 var logger = require('plylog');
 // logger.setVerbose();
@@ -98,9 +99,12 @@ gulp.task('images', function() {
 
 // Vulcanize elements
 gulp.task('vulcanize', function() {
-  return new Promise((resolve, reject) => {
+  return new Promise(function (resolve, reject) {
     var buildStream = merge(project.sources(), project.dependencies())
-      .pipe(project.bundler())
+      .pipe(project.bundler({
+        strategy: bundler.generateShellMergeStrategy(polymerJSON.shell, 3),
+        urlMapper: bundler.generateCountingSharedBundleUrlMapper('src/components/shards/bundle-')
+      }))
       .on('error', reject)
       .pipe(gulp.dest(SHARDS))
       .on('end', resolve);
@@ -111,13 +115,13 @@ gulp.task('vulcanize', function() {
 
 // Minify HTML and inline styles
 gulp.task('minify:html', function() {
-    return gulp.src(SHARDS + '/src/components/{app,pages}/**/*-{app,page}.html')
+    return gulp.src(SHARDS + '/src/components/{app,pages,shards}/**/*')
     .pipe($.htmlmin({
       collapseWhitespace: true,
       removeComments: true,
       minifyCSS: true
     }))
-    .pipe($.replace('url(../../vendor', 'url(/vendor')) // remove this, run build an ou will see 404 .ttf requests
+    .pipe($.replace('url(../../vendor', 'url(/vendor'))
     .pipe(gulp.dest(TMP + '/src/components'))
     .pipe($.size({
       title: 'minify:html'
