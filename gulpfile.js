@@ -64,14 +64,14 @@ gulp.task('copy', function() {
   var favicon = gulp.src('src/favicon.ico')
     .pipe(gulp.dest(dist()));
 
-  var json = gulp.src('src/**.json')
-    .pipe(gulp.dest(dist()));
+  var cvc = gulp.src('vendor/gold-cc-cvc-input/*.png')
+    .pipe(gulp.dest(dist('vendor/gold-cc-cvc-input')));
 
   // Copy webcomponents.js
-  var vendor = gulp.src('src/vendor/webcomponentsjs/webcomponents-lite.min.js')
+  var vendor = gulp.src('vendor/webcomponentsjs/webcomponents-lite.min.js')
     .pipe(gulp.dest(dist('vendor/webcomponentsjs')));
 
-  return merge(vendor, favicon, json)
+  return merge(vendor, favicon, cvc)
     .pipe($.size({
       title: 'copy'
     }));
@@ -102,6 +102,7 @@ gulp.task('vulcanize', function() {
   return new Promise(function (resolve, reject) {
     var buildStream = merge(project.sources(), project.dependencies())
       .pipe(project.bundler({
+        rewriteUrlsInTemplates: true,
         strategy: bundler.generateShellMergeStrategy(polymerJSON.shell, 3),
         urlMapper: bundler.generateCountingSharedBundleUrlMapper('src/components/shards/bundle-')
       }))
