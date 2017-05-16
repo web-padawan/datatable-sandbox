@@ -1,5 +1,7 @@
 <link rel="import" href="../../../../vendor/polymer/polymer.html">
 
+<link rel="import" href="../../core/sandbox-behaviors/sandbox-logical-expressions-behavior.html">
+
 <!-- style module -->
 <link rel="import" href="styles/sandbox-demo-first-sub-page-styles.html">
 
@@ -17,7 +19,11 @@
       'use strict';
 
       Polymer({
-        is: 'sandbox-demo-first-sub-page'
+
+        is: 'sandbox-demo-first-sub-page',
+
+        behaviors: [ sandbox.LogicalExpressionsBehavior ]
+
       });
     })();
   </script>
